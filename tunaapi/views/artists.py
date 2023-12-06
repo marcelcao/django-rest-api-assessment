@@ -60,5 +60,5 @@ class ArtistSerializer(serializers.ModelSerializer):
   """JSON serializer for artists"""
   class Meta:
     model = Artist
-    fields = ('name', 'age', 'bio')
+    fields = ('id', 'name', 'age', 'bio')
     depth = 0
