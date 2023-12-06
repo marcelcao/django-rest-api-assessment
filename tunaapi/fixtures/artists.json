@@ -1,0 +1,29 @@
+[
+  {
+    "model": "tunaapi.artist",
+    "pk": 1,
+    "fields": {
+        "name": "Jungle",
+        "age": 10,
+        "bio": "Jungle are a British electronic music project founded in 2013 by London-based producers Josh Lloyd-Watson and Tom McFarland. Jungle have released four studio albums: Jungle, which was shortlisted for the Mercury Prize, For Ever, Loving in Stereo, and Volcano."
+      }
+  },
+  {
+    "model": "tunaapi.artist",
+    "pk": 2,
+    "fields": {
+        "name": "Leisure",
+        "age": 8,
+        "bio": "Leisure (stylized as LEISURE) are a New Zealand electronic music project from Auckland, formed in Muriwai in 2015.[1] The group's current lineup consists of Djeisan Suskov, Jaden Parkes, Josh Fountain, Tom Young, Jordan Arts and Paul Roper, all established musicians and producers who have performed in the Auckland's music scene since the early 2000's"
+      }
+  },
+  {
+    "model": "tunaapi.artist",
+    "pk": 3,
+    "fields": {
+        "name": "Usher",
+        "age": 45,
+        "bio": "Usher Raymond IV is an American singer, songwriter, and dancer. He is widely recognized as an influential figure in contemporary R&B and pop music. Raymond first released his self-titled debut album in 1994 at the age of sixteen, and rose to fame in the late 1990s following the release of his second album My Way."
+      }
+  }
+]

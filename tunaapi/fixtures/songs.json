@@ -1,0 +1,32 @@
+[
+  {
+    "model": "tunaapi.song",
+    "pk": 1,
+    "fields": {
+      "title": "Back On 74",
+      "artist_id": 1,
+      "album": "Volcano",
+      "length": 209
+      }
+  },
+  {
+    "model": "tunaapi.song",
+    "pk": 2,
+    "fields": {
+      "title": "Beat 54 (All Good Now)",
+      "artist_id": 1,
+      "album": "For Ever",
+      "length": 245
+      }
+  },
+  {
+    "model": "tunaapi.song",
+    "pk": 3,
+    "fields": {
+      "title": "Still Rolling",
+      "artist_id": 2,
+      "album": "Leisurevision",
+      "length": 210
+      }
+  }
+]
