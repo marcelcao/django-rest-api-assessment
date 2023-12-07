@@ -4,6 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from tunaapi.models import Artist
+from tunaapi.serializers import SongSerializer
 
 class ArtistView(ViewSet):
   """Artist View"""
@@ -13,7 +14,7 @@ class ArtistView(ViewSet):
     
     try:
       artist = Artist.objects.get(pk=pk)
-      serializer = ArtistSerializer(artist)
+      serializer = ArtistSongsSerializer(artist)
       return Response(serializer.data)
     except Artist.DoesNotExist as ex:
       return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
@@ -56,6 +57,15 @@ class ArtistView(ViewSet):
     artist.delete()
     
     return Response (None, status=status.HTTP_204_NO_CONTENT)
+
+class ArtistSongsSerializer(serializers.ModelSerializer):
+  """JSON serializer to get artist's associated songs"""
+  songs = SongSerializer(many=True, read_only=True)
+  
+  class Meta:
+    model = Artist
+    fields = ('id', 'name', 'age', 'bio', 'songs', )
+    depth = 1
 class ArtistSerializer(serializers.ModelSerializer):
   """JSON serializer for artists"""
   class Meta:
