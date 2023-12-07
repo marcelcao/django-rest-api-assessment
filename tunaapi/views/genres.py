@@ -4,6 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from tunaapi.models import Genre
+from tunaapi.serializers import GenreSongsSerializer
 
 class GenreView(ViewSet):
   """Genre View"""
@@ -13,7 +14,7 @@ class GenreView(ViewSet):
     
     try:
       genre = Genre.objects.get(pk=pk)
-      serializer = GenreSerializer(genre)
+      serializer = SongsInGenreSerializer(genre)
       return Response(serializer.data)
     except Genre.DoesNotExist as ex:
       return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
@@ -52,6 +53,16 @@ class GenreView(ViewSet):
     genre.delete()
     
     return Response (None, status=status.HTTP_204_NO_CONTENT)
+
+class SongsInGenreSerializer(serializers.ModelSerializer):
+  """JSON serializer to get genre's associated songs"""
+  
+  songs = GenreSongsSerializer(many=True, read_only=True)
+  
+  class Meta:
+    model = Genre
+    fields = ('id', 'description', 'songs')
+    depth = 1
 class GenreSerializer(serializers.ModelSerializer):
   """JSON serializer for artists"""
   class Meta:
