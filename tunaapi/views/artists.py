@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from tunaapi.models import Artist
 from tunaapi.serializers import SongSerializer
+from rest_framework.decorators import action
 
 class ArtistView(ViewSet):
   """Artist View"""
@@ -23,6 +24,11 @@ class ArtistView(ViewSet):
     """Handles GET for all artists"""
     
     artists = Artist.objects.all()
+    
+    """Filter artists by genre"""
+    artists_by_genre = request.query_params.get('genre_id', None)
+    if artists_by_genre is not None:
+        artists = Artist.objects.filter(songs__genres__genre_id=artists_by_genre)
       
     serializer = ArtistSerializer(artists, many=True)
     return Response(serializer.data)
