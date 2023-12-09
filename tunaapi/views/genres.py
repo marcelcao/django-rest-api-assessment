@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from tunaapi.models import Genre
-from tunaapi.serializers import GenreSongsSerializer
+from tunaapi.serializers import SongSerializer
 
 class GenreView(ViewSet):
   """Genre View"""
@@ -57,7 +57,7 @@ class GenreView(ViewSet):
 class SongsInGenreSerializer(serializers.ModelSerializer):
   """JSON serializer to get genre's associated songs"""
   
-  songs = GenreSongsSerializer(many=True, read_only=True)
+  songs = SongSerializer(many=True, read_only=True)
   
   class Meta:
     model = Genre
